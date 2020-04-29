@@ -1,6 +1,7 @@
 class ArticleService
   def get_articles(url, css_tag)
-
+    body = articles_endpoint_request_body(url, css_tag)
+    post_request(articles_endpoint, body)
   end
 
   private
@@ -11,9 +12,11 @@ class ArticleService
     end
 
     def post_request(uri, body)
-      connection.post(uri) do |request|
+      response = connection.post(uri) do |request|
         request.body = body
       end
+
+      JSON.parse(response.body)
     end
 
     def articles_endpoint
