@@ -6,7 +6,7 @@ class ArticleService
 
   private
     def connection
-      Faraday.new('https://news-agent-api.herokuapp.com/') do |f|
+      Faraday.new(ENV['SCRAPER_URL']) do |f|
         f.adapter Faraday.default_adapter
       end
     end
