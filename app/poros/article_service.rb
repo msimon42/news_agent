@@ -18,5 +18,12 @@ class ArticleService
 
     def articles_endpoint
       '/request-articles'
-    end  
+    end
+
+    def articles_endpoint_request_body(url, css_tag)
+      {
+        'url' => url,
+        'css-tag' => css_tag
+      }.to_json
+    end
 end
