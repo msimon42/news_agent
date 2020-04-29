@@ -7,6 +7,8 @@ class ArticleService
     end
 
     def post_request(uri, body)
-
-    end  
+      connection.post(uri) do |request|
+        request.body = body
+      end  
+    end
 end
